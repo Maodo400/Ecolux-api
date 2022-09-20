@@ -1,0 +1,1163 @@
+openapi: 3.0.3
+info:
+  title: Blog API Project
+  version: 1.0.0
+  description: A sample blog to learn about DRF
+paths:
+  /api/auteurs/:
+    get:
+      operationId: api_auteurs_list
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Auteur'
+          description: ''
+    post:
+      operationId: api_auteurs_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Auteur'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Auteur'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Auteur'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Auteur'
+          description: ''
+  /api/auteurs/{id}/:
+    get:
+      operationId: api_auteurs_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Auteur'
+          description: ''
+    put:
+      operationId: api_auteurs_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Auteur'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Auteur'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Auteur'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Auteur'
+          description: ''
+    patch:
+      operationId: api_auteurs_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedAuteur'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedAuteur'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedAuteur'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Auteur'
+          description: ''
+    delete:
+      operationId: api_auteurs_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/livres/:
+    get:
+      operationId: api_livres_list
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Livre'
+          description: ''
+    post:
+      operationId: api_livres_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Livre'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Livre'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Livre'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Livre'
+          description: ''
+  /api/livres/{id}/:
+    get:
+      operationId: api_livres_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Livre'
+          description: ''
+    put:
+      operationId: api_livres_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Livre'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Livre'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Livre'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Livre'
+          description: ''
+    patch:
+      operationId: api_livres_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedLivre'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedLivre'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedLivre'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Livre'
+          description: ''
+    delete:
+      operationId: api_livres_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/maison_editions/:
+    get:
+      operationId: api_maison_editions_list
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MaisonEdition'
+          description: ''
+    post:
+      operationId: api_maison_editions_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MaisonEdition'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/MaisonEdition'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/MaisonEdition'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MaisonEdition'
+          description: ''
+  /api/maison_editions/{id}/:
+    get:
+      operationId: api_maison_editions_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MaisonEdition'
+          description: ''
+    put:
+      operationId: api_maison_editions_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MaisonEdition'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/MaisonEdition'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/MaisonEdition'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MaisonEdition'
+          description: ''
+    patch:
+      operationId: api_maison_editions_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedMaisonEdition'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedMaisonEdition'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedMaisonEdition'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MaisonEdition'
+          description: ''
+    delete:
+      operationId: api_maison_editions_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/matieres/:
+    get:
+      operationId: api_matieres_list
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Matiere'
+          description: ''
+    post:
+      operationId: api_matieres_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Matiere'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Matiere'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Matiere'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Matiere'
+          description: ''
+  /api/matieres/{id}/:
+    get:
+      operationId: api_matieres_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Matiere'
+          description: ''
+    put:
+      operationId: api_matieres_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Matiere'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Matiere'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Matiere'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Matiere'
+          description: ''
+    patch:
+      operationId: api_matieres_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedMatiere'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedMatiere'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedMatiere'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Matiere'
+          description: ''
+    delete:
+      operationId: api_matieres_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/schema/:
+    get:
+      operationId: api_schema_retrieve
+      description: |-
+        OpenApi3 schema for this API. Format can be selected via content negotiation.
+
+        - YAML: application/vnd.oai.openapi
+        - JSON: application/vnd.oai.openapi+json
+      parameters:
+      - in: query
+        name: format
+        schema:
+          type: string
+          enum:
+          - json
+          - yaml
+      - in: query
+        name: lang
+        schema:
+          type: string
+          enum:
+          - af
+          - ar
+          - ar-dz
+          - ast
+          - az
+          - be
+          - bg
+          - bn
+          - br
+          - bs
+          - ca
+          - cs
+          - cy
+          - da
+          - de
+          - dsb
+          - el
+          - en
+          - en-au
+          - en-gb
+          - eo
+          - es
+          - es-ar
+          - es-co
+          - es-mx
+          - es-ni
+          - es-ve
+          - et
+          - eu
+          - fa
+          - fi
+          - fr
+          - fy
+          - ga
+          - gd
+          - gl
+          - he
+          - hi
+          - hr
+          - hsb
+          - hu
+          - hy
+          - ia
+          - id
+          - ig
+          - io
+          - is
+          - it
+          - ja
+          - ka
+          - kab
+          - kk
+          - km
+          - kn
+          - ko
+          - ky
+          - lb
+          - lt
+          - lv
+          - mk
+          - ml
+          - mn
+          - mr
+          - ms
+          - my
+          - nb
+          - ne
+          - nl
+          - nn
+          - os
+          - pa
+          - pl
+          - pt
+          - pt-br
+          - ro
+          - ru
+          - sk
+          - sl
+          - sq
+          - sr
+          - sr-latn
+          - sv
+          - sw
+          - ta
+          - te
+          - tg
+          - th
+          - tk
+          - tr
+          - tt
+          - udm
+          - uk
+          - ur
+          - uz
+          - vi
+          - zh-hans
+          - zh-hant
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/vnd.oai.openapi:
+              schema:
+                type: object
+                additionalProperties: {}
+            application/yaml:
+              schema:
+                type: object
+                additionalProperties: {}
+            application/vnd.oai.openapi+json:
+              schema:
+                type: object
+                additionalProperties: {}
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/type_squelettes/:
+    get:
+      operationId: api_type_squelettes_list
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TypeSquelette'
+          description: ''
+    post:
+      operationId: api_type_squelettes_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TypeSquelette'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/TypeSquelette'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/TypeSquelette'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TypeSquelette'
+          description: ''
+  /api/type_squelettes/{id}/:
+    get:
+      operationId: api_type_squelettes_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TypeSquelette'
+          description: ''
+    put:
+      operationId: api_type_squelettes_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TypeSquelette'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/TypeSquelette'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/TypeSquelette'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TypeSquelette'
+          description: ''
+    patch:
+      operationId: api_type_squelettes_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedTypeSquelette'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedTypeSquelette'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedTypeSquelette'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TypeSquelette'
+          description: ''
+    delete:
+      operationId: api_type_squelettes_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+components:
+  schemas:
+    Auteur:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        nom:
+          type: string
+          maxLength: 50
+        prenom:
+          type: string
+          maxLength: 50
+        profession:
+          type: string
+          maxLength: 50
+        bio:
+          type: string
+        telephone:
+          type: string
+          maxLength: 20
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+      - bio
+      - created_at
+      - id
+      - nom
+      - prenom
+      - profession
+    Livre:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        couverture:
+          type: string
+          format: uri
+        nom:
+          type: string
+          maxLength: 50
+        aliases:
+          type: string
+          maxLength: 50
+        date_publication:
+          type: string
+          format: date-time
+        description:
+          type: string
+        est_corrige:
+          type: boolean
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        maison_edition:
+          type: integer
+        type_squelette:
+          type: integer
+        auteurs:
+          type: array
+          items:
+            type: integer
+        matieres:
+          type: array
+          items:
+            type: integer
+      required:
+      - auteurs
+      - created_at
+      - date_publication
+      - description
+      - id
+      - maison_edition
+      - matieres
+      - nom
+      - type_squelette
+    MaisonEdition:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        nom:
+          type: string
+          maxLength: 50
+        description:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+      - created_at
+      - description
+      - id
+      - nom
+    Matiere:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        photo:
+          type: string
+          format: uri
+        nom:
+          type: string
+          maxLength: 50
+        aliases:
+          type: string
+          maxLength: 50
+        description:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+      - created_at
+      - description
+      - id
+      - nom
+    PatchedAuteur:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        nom:
+          type: string
+          maxLength: 50
+        prenom:
+          type: string
+          maxLength: 50
+        profession:
+          type: string
+          maxLength: 50
+        bio:
+          type: string
+        telephone:
+          type: string
+          maxLength: 20
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+    PatchedLivre:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        couverture:
+          type: string
+          format: uri
+        nom:
+          type: string
+          maxLength: 50
+        aliases:
+          type: string
+          maxLength: 50
+        date_publication:
+          type: string
+          format: date-time
+        description:
+          type: string
+        est_corrige:
+          type: boolean
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        maison_edition:
+          type: integer
+        type_squelette:
+          type: integer
+        auteurs:
+          type: array
+          items:
+            type: integer
+        matieres:
+          type: array
+          items:
+            type: integer
+    PatchedMaisonEdition:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        nom:
+          type: string
+          maxLength: 50
+        description:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+    PatchedMatiere:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        photo:
+          type: string
+          format: uri
+        nom:
+          type: string
+          maxLength: 50
+        aliases:
+          type: string
+          maxLength: 50
+        description:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+    PatchedTypeSquelette:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        nom:
+          type: string
+          maxLength: 50
+        description:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+    TypeSquelette:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        nom:
+          type: string
+          maxLength: 50
+        description:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+      - created_at
+      - description
+      - id
+      - nom
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid

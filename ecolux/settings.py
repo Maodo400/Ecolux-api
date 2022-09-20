@@ -37,6 +37,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    
+    #module de recherche
+    'recherches.apps.RecherchesConfig',
+    
+    'rest_framework',
+    
+    'drf_spectacular',
 ]
 
 MIDDLEWARE = [
@@ -121,3 +128,17 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+SPECTACULAR_SETTINGS = { 
+    "TITLE": "Ecolux API Project", 
+    "DESCRIPTION": "Projet destiné aux eleves de colleges et de lycée", 
+    "VERSION": "1.0.0",
+    # OTHER SETTINGS
+}
+
+REST_FRAMEWORK = { 
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.AllowAny",
+    ],
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
+}
