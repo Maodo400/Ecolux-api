@@ -1,13 +1,6 @@
 from django.contrib import admin
+from mptt.admin import MPTTModelAdmin
+from recherches.models import Auteur, Chapitre, Classe, Livre, MaisonEdition, Matiere, TypeSquelette
 
-from recherches.models import Auteur, Livre, MaisonEdition, Matiere, TypeSquelette
-
-# Register your models here.
-
-
-admin.site.register(Livre)
-admin.site.register(MaisonEdition)
-admin.site.register(Auteur)
-admin.site.register(Matiere)
-admin.site.register(TypeSquelette)
-
+admin.site.register(Livre, MPTTModelAdmin)
+admin.site.register(Chapitre)
