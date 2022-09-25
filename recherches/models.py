@@ -156,11 +156,11 @@ class Livre(models.Model):
   slug = models.SlugField(unique=True)
 
 
-  # auteurs = models.ManyToManyField(Auteur, blank=True)  
-  # maison_edition = models.ForeignKey(MaisonEdition, on_delete=models.CASCADE, blank=True)
-  # matieres = models.ManyToManyField(Matiere, blank=True)  
-  # type_squelette = models.ForeignKey(TypeSquelette, on_delete=models.CASCADE, blank=True)
-  # classes = models.ManyToManyField(Classe, blank=True)
+  auteurs = models.ManyToManyField(Auteur, blank=True, null=True)  
+  maison_edition = models.ForeignKey(MaisonEdition, on_delete=models.CASCADE, blank=True, null=True)
+  matieres = models.ManyToManyField(Matiere, blank=True, null=True)  
+  type_squelette = models.ForeignKey(TypeSquelette, on_delete=models.CASCADE, blank=True, null=True)
+  classes = models.ManyToManyField(Classe, blank=True, null=True)
 
   class Meta:
         verbose_name = _("Livre")

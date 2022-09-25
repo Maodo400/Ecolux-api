@@ -22,31 +22,35 @@ class MaisonEditionSerializer(serializers.ModelSerializer):
     fields = '__all__'
     model = MaisonEdition
 
+
+      
+
+class SousQuestionSerializer(serializers.ModelSerializer):
+    
+  class Meta:
+    model = SousQuestion
+    fields = '__all__'       
+
+        
+class QuestionSerializer(serializers.ModelSerializer):
+  sous_questions = SousQuestionSerializer(read_only=True, many=True)
+
+  class Meta:
+    model = Question
+    fields = '__all__'
+
 class ExoSerializer(serializers.ModelSerializer):
-  
+  questions = QuestionSerializer(read_only=True, many=True)
+
   class Meta:
     model = Exo
     fields = '__all__'
-      
+
 class ChapitreSerializer(serializers.ModelSerializer):
   exos = ExoSerializer(read_only=True, many=True)
 
   class Meta:
     model = Chapitre
-    fields = '__all__'
-        
-
-        
-class QuestionSerializer(serializers.ModelSerializer):
-  
-  class Meta:
-    model = Question
-    fields = '__all__'
-
-class SousQuestionSerializer(serializers.ModelSerializer):
-  
-  class Meta:
-    model = SousQuestion
     fields = '__all__'
     
 class LivreSerializer(serializers.ModelSerializer):
@@ -54,3 +58,6 @@ class LivreSerializer(serializers.ModelSerializer):
     class Meta:
       model = Livre
       fields = '__all__'
+      
+
+    
