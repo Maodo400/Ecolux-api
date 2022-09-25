@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Chapitre, TypeSquelette, Matiere, Auteur, Livre, MaisonEdition
+from .models import Chapitre, Exo, Question, SousQuestion, TypeSquelette, Matiere, Auteur, Livre, MaisonEdition
     
 class AuteurSerializer(serializers.ModelSerializer):
   class Meta:
@@ -21,16 +21,36 @@ class MaisonEditionSerializer(serializers.ModelSerializer):
   class Meta:
     fields = '__all__'
     model = MaisonEdition
-    
+
+class ExoSerializer(serializers.ModelSerializer):
+  
+  class Meta:
+    model = Exo
+    fields = '__all__'
+      
 class ChapitreSerializer(serializers.ModelSerializer):
+  exos = ExoSerializer(read_only=True, many=True)
 
   class Meta:
     model = Chapitre
-    fields = ["id", "livre", "titre", "slug",]
+    fields = '__all__'
+        
 
+        
+class QuestionSerializer(serializers.ModelSerializer):
+  
+  class Meta:
+    model = Question
+    fields = '__all__'
+
+class SousQuestionSerializer(serializers.ModelSerializer):
+  
+  class Meta:
+    model = SousQuestion
+    fields = '__all__'
+    
 class LivreSerializer(serializers.ModelSerializer):
+    chapitres = ChapitreSerializer(read_only=True, many=True)
     class Meta:
-        model = Livre
-        fields = ["nom", "slug"]
-        
-        
+      model = Livre
+      fields = '__all__'

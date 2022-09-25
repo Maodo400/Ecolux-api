@@ -2,11 +2,11 @@ from django.shortcuts import render
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import generics
 from rest_framework import filters
-from .models import Chapitre, MaisonEdition, Auteur, Livre, Matiere, TypeSquelette
-from .serializers import (ChapitreSerializer, 
+from .models import Chapitre, Exo, MaisonEdition, Auteur, Livre, Matiere, Question, SousQuestion, TypeSquelette
+from .serializers import (ChapitreSerializer, ExoSerializer, 
                           MaisonEditionSerializer, 
                           LivreSerializer, 
-                          MatiereSerializer, 
+                          MatiereSerializer, QuestionSerializer, SousQuestionSerializer, 
                           TypeSqueletteSerializer, 
                           AuteurSerializer)
 
@@ -73,40 +73,55 @@ class TypeSqueletteDetail(generics.RetrieveUpdateDestroyAPIView):
   queryset = TypeSquelette.objects.all()
   serializer_class = TypeSqueletteSerializer
   
-# class LivreItemView(generics.ListAPIView):
-#     serializer_class = ChapitreSerializer
+  
 
-#     def get_queryset(self):
-#         return Chapitre.objects.filter(
-#             livre__in=Livre.objects.get(slug=self.kwargs["slug"]).get_descendants(include_self=True)
-#         )
+class LivreList(generics.ListCreateAPIView):
+  # permission_classes = (IsAuthorOrReadOnly,) # new
+  queryset = Livre.objects.all()
+  serializer_class = LivreSerializer
+  filter_backends = [DjangoFilterBackend]
+  filterset_fields = ['nom']
+  
+class LivreDetail(generics.RetrieveUpdateDestroyAPIView):
+  lookup_field = "slug"
 
+  # permission_classes = (IsAuthorOrReadOnly,) # new
+  queryset = Livre.objects.all()
+  serializer_class = LivreSerializer
+  
+  
+class ChapitreList(generics.ListCreateAPIView):
+  # permission_classes = (IsAuthorOrReadOnly,) # new
+  queryset = Chapitre.objects.all()
+  serializer_class = ChapitreSerializer
+  
+class ChapitreDetail(generics.RetrieveUpdateDestroyAPIView):
+  # permission_classes = (IsAuthorOrReadOnly,) # new
+  lookup_field = "slug"
 
-# class LivreListView(generics.ListAPIView):
-#     queryset = Livre.objects.filter(level=1)
-#     serializer_class = LivreSerializer
-
-class ChapitreListView(generics.ListAPIView):
-    queryset = Chapitre.objects.all()
-    serializer_class = ChapitreSerializer
-
-
-class ChapitreDetail(generics.RetrieveAPIView):
-    lookup_field = "slug"
-    queryset = Chapitre.objects.all()
-    serializer_class = ChapitreSerializer
+  queryset = Chapitre.objects.all()
+  serializer_class = ChapitreSerializer
+  
+  
+class QuestionList(generics.ListCreateAPIView):
+  # permission_classes = (IsAuthorOrReadOnly,) # new
+  queryset = Question.objects.all()
+  serializer_class = QuestionSerializer
+  
+class QuestionDetail(generics.RetrieveUpdateDestroyAPIView):
+  # permission_classes = (IsAuthorOrReadOnly,) # new
+  queryset = Question.objects.all()
+  serializer_class = QuestionSerializer
+  
+  
+class SousQuestionList(generics.ListCreateAPIView):
+  # permission_classes = (IsAuthorOrReadOnly,) # new
+  queryset = SousQuestion.objects.all()
+  serializer_class = SousQuestionSerializer
+  
+class SousQuestionDetail(generics.RetrieveUpdateDestroyAPIView):
+  # permission_classes = (IsAuthorOrReadOnly,) # new
+  queryset = SousQuestion.objects.all()
+  serializer_class = SousQuestionSerializer
     
-    
-class LivreItemView(generics.ListAPIView):
-    serializer_class = ChapitreSerializer
-
-    def get_queryset(self):
-      return Chapitre.objects.filter(
-        livre__in=Livre.objects.get(slug=self.kwargs["slug"]).get_descendants(include_self=True)
-        )
-
-
-class LivreListView(generics.ListAPIView):
-    queryset = Livre.objects.filter(level=0)
-    serializer_class = LivreSerializer
-    
+  
